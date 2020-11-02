@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../components/Layout";
-import Button from "../components/Button";
-import Counter from "../components/Counter";
+import Layout from "components/Layout";
+import Button from "components/Button";
+import Counter from "components/Counter";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider, useDispatch, useSelector } from "react-redux";
 

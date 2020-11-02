@@ -16,7 +16,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>React State Management</title>
           <link
             href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&display=swap"
             rel="stylesheet"

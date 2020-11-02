@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "../components/Layout";
-import Button from "../components/Button";
-import Counter from "../components/Counter";
+import Layout from "components/Layout";
+import Button from "components/Button";
+import Counter from "components/Counter";
 import create, { State } from "zustand";
 
 interface CounterState extends State {
