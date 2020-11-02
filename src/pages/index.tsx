@@ -7,6 +7,7 @@ export default function Home() {
     { label: "useState", href: "/use-state" },
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
+    { label: "Recoil", href: "/recoil" },
   ];
 
   return (
@@ -20,6 +21,11 @@ export default function Home() {
       <style jsx>{`
         a {
           font-size: 1.25rem;
+          background-color: #acefff;
+          color: #000;
+          padding: 12px 16px;
+          border-radius: 8px;
+          box-shadow: 0 2px 0 #c2d0d4;
         }
       `}</style>
     </Layout>

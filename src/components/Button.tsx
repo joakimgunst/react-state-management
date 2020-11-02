@@ -16,7 +16,7 @@ export default function Button({ label, onClick }: Props) {
           font-size: 1.5rem;
           border: 0;
           border-radius: 8px;
-          box-shadow: 1px 2px 1px #c2d0d4;
+          box-shadow: 0 2px 0 #c2d0d4;
           outline: none;
           cursor: pointer;
         }
