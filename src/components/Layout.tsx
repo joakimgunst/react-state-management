@@ -14,11 +14,11 @@ export default function Layout({ title, children }: Props) {
 
       <style jsx>{`
         .layout {
+          margin-top: 48px;
           height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
           gap: 24px;
         }
       `}</style>
