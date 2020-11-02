@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <Layout title="Examples">
-      {links.map((link) => (
+      {links.map(link => (
         <Link key={link.href} href={link.href}>
           <a>{link.label}</a>
         </Link>

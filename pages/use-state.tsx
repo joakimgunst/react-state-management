@@ -5,7 +5,7 @@ import Counter from "../components/Counter";
 
 export default function UseState() {
   const [counter, setCounter] = useState(0);
-  const increment = () => setCounter((counter) => counter + 1);
+  const increment = () => setCounter(counter => counter + 1);
 
   return (
     <Layout title="useState">

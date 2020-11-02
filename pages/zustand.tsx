@@ -9,9 +9,9 @@ interface CounterState extends State {
   increment(): void;
 }
 
-const useStore = create<CounterState>((set) => ({
+const useStore = create<CounterState>(set => ({
   counter: 0,
-  increment: () => set((state) => ({ counter: state.counter + 1 })),
+  increment: () => set(state => ({ counter: state.counter + 1 })),
 }));
 
 export default function Zustand() {
@@ -24,11 +24,11 @@ export default function Zustand() {
 }
 
 function ButtonContainer() {
-  const increment = useStore((state) => state.increment);
+  const increment = useStore(state => state.increment);
   return <Button label="Increment" onClick={increment} />;
 }
 
 function CounterContainer() {
-  const counter = useStore((state) => state.counter);
+  const counter = useStore(state => state.counter);
   return <Counter value={counter} />;
 }
