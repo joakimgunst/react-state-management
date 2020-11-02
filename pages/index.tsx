@@ -6,6 +6,7 @@ export default function Home() {
   const links = [
     { label: "useState", href: "/use-state" },
     { label: "Redux", href: "/redux" },
+    { label: "Zustand", href: "/zustand" },
   ];
 
   return (
