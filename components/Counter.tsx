@@ -1,12 +1,22 @@
-import styled from "styled-components";
+interface Props {
+  value: number;
+}
 
-export const Counter = styled.div`
-  padding: 16px;
-  background-color: #aff8db;
-  font-size: 2rem;
-  border-radius: 8px;
-  min-width: 92px;
-  text-align: center;
-`;
+export default function Counter({ value }: Props) {
+  return (
+    <div className="counter">
+      {value}
 
-export default Counter;
+      <style jsx>{`
+        .counter {
+          padding: 16px;
+          background-color: #aff8db;
+          font-size: 2rem;
+          border-radius: 8px;
+          min-width: 92px;
+          text-align: center;
+        }
+      `}</style>
+    </div>
+  );
+}

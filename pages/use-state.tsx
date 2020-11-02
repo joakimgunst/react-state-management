@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
@@ -9,11 +8,7 @@ export default function UseState() {
   const increment = () => setCounter((counter) => counter + 1);
 
   return (
-    <Layout>
-      <Head>
-        <title>useState</title>
-      </Head>
-      <h1>useState</h1>
+    <Layout title="useState">
       <ButtonContainer onClick={increment} />
       <CounterContainer counter={counter} />
     </Layout>
@@ -21,9 +16,9 @@ export default function UseState() {
 }
 
 function ButtonContainer({ onClick }: { onClick(): void }) {
-  return <Button onClick={onClick}>Increment</Button>;
+  return <Button label="Increment" onClick={onClick} />;
 }
 
 function CounterContainer({ counter }: { counter: number }) {
-  return <Counter>{counter}</Counter>;
+  return <Counter value={counter} />;
 }
