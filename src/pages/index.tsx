@@ -7,6 +7,8 @@ export default function Home() {
     { label: "useState", href: "/use-state" },
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
+    { label: "Zustand Async", href: "/zustand-async" },
+    { label: "Zustand Middleware", href: "/zustand-middleware" },
     { label: "Recoil", href: "/recoil" },
   ];
 

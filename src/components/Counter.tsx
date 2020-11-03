@@ -1,11 +1,12 @@
 interface Props {
   value: number;
+  loading?: boolean;
 }
 
-export default function Counter({ value }: Props) {
+export default function Counter({ value, loading }: Props) {
   return (
     <div className="counter">
-      {value}
+      {loading ? "..." : value}
 
       <style jsx>{`
         .counter {
