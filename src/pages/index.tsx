@@ -5,8 +5,10 @@ import Layout from "components/Layout";
 export default function Home() {
   const links = [
     { label: "useState", href: "/use-state" },
+    { label: "useState Todo", href: "/use-state-todo" },
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
+    { label: "Zustand Todo", href: "/zustand-todo" },
     { label: "Zustand Async", href: "/zustand-async" },
     { label: "Zustand Middleware", href: "/zustand-middleware" },
     { label: "Recoil", href: "/recoil" },
