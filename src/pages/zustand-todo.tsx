@@ -1,18 +1,30 @@
 import React from "react";
-import create, { State } from "zustand";
-import { Todo } from "model";
+import create from "zustand";
+import { Todo, Todos } from "model";
 import TodoLayout from "components/TodoLayout";
 import AddForm from "components/AddForm";
 import TodoList from "components/TodoList";
 import { combine } from "zustand/middleware";
+import produce from "immer";
 
 const initialState = {
-  todos: [] as Todo[],
+  todos: {} as Todos,
 };
 
 const useStore = create(
   combine(initialState, set => ({
-    addTodo: (todo: Todo) => set(state => ({ todos: [...state.todos, todo] })),
+    addTodo: (todo: Todo) =>
+      set(state =>
+        produce(state, draft => {
+          draft.todos[todo.id] = todo;
+        })
+      ),
+    toggleTodo: (id: string) =>
+      set(state =>
+        produce(state, draft => {
+          draft.todos[id].completed = !draft.todos[id].completed;
+        })
+      ),
   }))
 );
 
@@ -32,5 +44,6 @@ function AddFormContainer() {
 
 function TodoListContainer() {
   const todos = useStore(state => state.todos);
-  return <TodoList todos={todos} />;
+  const toggleTodo = useStore(state => state.toggleTodo);
+  return <TodoList todos={todos} onToggle={toggleTodo} />;
 }

@@ -6,6 +6,7 @@ export default function Home() {
   const links = [
     { label: "useState", href: "/use-state" },
     { label: "useState Todo", href: "/use-state-todo" },
+    { label: "useState Todo Immer", href: "/use-state-todo-immer" },
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
     { label: "Zustand Todo", href: "/zustand-todo" },

@@ -12,7 +12,7 @@ export default function AddForm({ onAdd }: Props) {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (value) {
-      onAdd({ id: nanoid(8), text: value });
+      onAdd({ id: nanoid(8), text: value, completed: false });
       setValue("");
     }
   }
@@ -54,11 +54,6 @@ export default function AddForm({ onAdd }: Props) {
           border: 0;
           border-radius: 8px;
           box-shadow: 0 2px 0 #c2d0d4;
-          cursor: pointer;
-        }
-
-        button:disabled {
-          cursor: not-allowed;
         }
       `}</style>
     </form>

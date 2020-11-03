@@ -1,16 +1,20 @@
-import { Todo } from "model";
+import { AnimatePresence } from "framer-motion";
+import { Todos } from "model";
 import TodoItem from "./TodoItem";
 
 interface Props {
-  todos: Todo[];
+  todos: Todos;
+  onToggle(id: string): void;
 }
 
-export default function TodoList({ todos }: Props) {
+export default function TodoList({ todos, onToggle }: Props) {
   return (
     <div className="list">
-      {todos.map(todo => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
+      <AnimatePresence>
+        {Object.values(todos).map(todo => (
+          <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
+        ))}
+      </AnimatePresence>
 
       <style jsx>{`
         .list {
