@@ -10,13 +10,12 @@ export default function UseState() {
 
   const addTodo = (todo: Todo) => setTodos(todos => pureAddTodo(todos, todo));
 
-  const toggleTodo = (id: string) =>
-    setTodos(todos => pureToggleTodo(todos, id));
+  const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
 
   return (
     <TodoLayout title="useState">
       <AddForm onAdd={addTodo} />
-      <TodoList todos={todos} onToggle={toggleTodo} />
+      <TodoList todos={todos} onToggle={toggle} />
     </TodoLayout>
   );
 }
