@@ -4,7 +4,7 @@ import { Todo, Todos } from "model";
 import TodoLayout from "components/TodoLayout";
 import AddForm from "components/AddForm";
 import TodoList from "components/TodoList";
-import { combine } from "zustand/middleware";
+import { combine, devtools } from "zustand/middleware";
 import * as utils from "utils";
 import TodoFilter from "components/TodoFilter";
 
@@ -16,14 +16,16 @@ const initialState = {
 type State = typeof initialState;
 
 const useStore = create(
-  combine(initialState, set => ({
-    addTodo: (todo: Todo) =>
-      set(({ todos }) => ({ todos: utils.addTodo(todos, todo) })),
-    toggleTodo: (id: string) =>
-      set(({ todos }) => ({ todos: utils.toggleTodo(todos, id) })),
-    toggleShowCompleted: () =>
-      set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
-  }))
+  devtools(
+    combine(initialState, set => ({
+      addTodo: (todo: Todo) =>
+        set(({ todos }) => ({ todos: utils.addTodo(todos, todo) })),
+      toggleTodo: (id: string) =>
+        set(({ todos }) => ({ todos: utils.toggleTodo(todos, id) })),
+      toggleShowCompleted: () =>
+        set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
+    }))
+  )
 );
 
 const selectVisibleTodos = ({ todos, showCompleted }: State) =>
