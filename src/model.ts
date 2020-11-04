@@ -1,7 +1,7 @@
 export interface Todo {
-  readonly id: string;
-  readonly text: string;
-  readonly completed: boolean;
+  id: string;
+  text: string;
+  completed: boolean;
 }
 
-export type Todos = ReadonlyArray<Todo>;
+export type Todos = ReadonlyArray<Readonly<Todo>>;

@@ -12,6 +12,7 @@ export default function Home() {
     { label: "Zustand", href: "/zustand" },
     { label: "Zustand Todo", href: "/zustand-todo" },
     { label: "Zustand Async", href: "/zustand-async" },
+    { label: "Zustand Async Todo", href: "/zustand-async-todo" },
     { label: "Zustand Middleware", href: "/zustand-middleware" },
     { label: "Recoil", href: "/recoil" },
     { label: "Recoil Todo", href: "/recoil-todo" },

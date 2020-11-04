@@ -16,16 +16,14 @@ const initialState = {
 type State = typeof initialState;
 
 const useStore = create(
-  devtools(
-    combine(initialState, set => ({
-      addTodo: (todo: Todo) =>
-        set(({ todos }) => ({ todos: utils.pureAddTodo(todos, todo) })),
-      toggleTodo: (id: string) =>
-        set(({ todos }) => ({ todos: utils.pureToggleTodo(todos, id) })),
-      toggleShowCompleted: () =>
-        set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
-    }))
-  )
+  combine(initialState, set => ({
+    addTodo: (todo: Todo) =>
+      set(({ todos }) => ({ todos: utils.pureAddTodo(todos, todo) })),
+    toggleTodo: (id: string) =>
+      set(({ todos }) => ({ todos: utils.pureToggleTodo(todos, id) })),
+    toggleShowCompleted: () =>
+      set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
+  }))
 );
 
 const selectVisibleTodos = ({ todos, showCompleted }: State) =>
