@@ -14,6 +14,7 @@ export default function Home() {
     { label: "Zustand Async", href: "/zustand-async" },
     { label: "Zustand Middleware", href: "/zustand-middleware" },
     { label: "Recoil", href: "/recoil" },
+    { label: "Recoil Todo", href: "/recoil-todo" },
   ];
 
   return (
