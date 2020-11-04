@@ -3,18 +3,15 @@ import AddForm from "components/AddForm";
 import { Todo, Todos } from "model";
 import TodoList from "components/TodoList";
 import TodoLayout from "components/TodoLayout";
+import * as utils from "utils";
 
 export default function UseState() {
-  const [todos, setTodos] = useState<Todos>({});
+  const [todos, setTodos] = useState<Todos>([]);
 
-  const addTodo = (todo: Todo) =>
-    setTodos(state => ({ ...state, [todo.id]: todo }));
+  const addTodo = (todo: Todo) => setTodos(todos => utils.addTodo(todos, todo));
 
   const toggleTodo = (id: string) =>
-    setTodos(state => ({
-      ...state,
-      [id]: { ...state[id], completed: !state[id].completed },
-    }));
+    setTodos(todos => utils.toggleTodo(todos, id));
 
   return (
     <TodoLayout title="useState">

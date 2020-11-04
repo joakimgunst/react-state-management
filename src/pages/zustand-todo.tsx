@@ -5,26 +5,18 @@ import TodoLayout from "components/TodoLayout";
 import AddForm from "components/AddForm";
 import TodoList from "components/TodoList";
 import { combine } from "zustand/middleware";
-import produce from "immer";
+import * as utils from "utils";
 
 const initialState = {
-  todos: {} as Todos,
+  todos: [] as Todos,
 };
 
 const useStore = create(
   combine(initialState, set => ({
     addTodo: (todo: Todo) =>
-      set(state =>
-        produce(state, draft => {
-          draft.todos[todo.id] = todo;
-        })
-      ),
+      set(({ todos }) => ({ todos: utils.addTodo(todos, todo) })),
     toggleTodo: (id: string) =>
-      set(state =>
-        produce(state, draft => {
-          draft.todos[id].completed = !draft.todos[id].completed;
-        })
-      ),
+      set(({ todos }) => ({ todos: utils.toggleTodo(todos, id) })),
   }))
 );
 
