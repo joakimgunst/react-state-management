@@ -8,6 +8,7 @@ export default function Home() {
     { label: "useState Todo", href: "/use-state-todo" },
     { label: "useState Todo Immer", href: "/use-state-todo-immer" },
     { label: "Redux", href: "/redux" },
+    { label: "Redux Todo", href: "/redux-todo" },
     { label: "Zustand", href: "/zustand" },
     { label: "Zustand Todo", href: "/zustand-todo" },
     { label: "Zustand Async", href: "/zustand-async" },
