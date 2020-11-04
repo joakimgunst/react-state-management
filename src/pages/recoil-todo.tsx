@@ -36,7 +36,7 @@ const visibleTodosState = selector({
 export default function Recoil() {
   return (
     <RecoilRoot>
-      <TodoLayout title="Redux">
+      <TodoLayout title="Recoil">
         <AddFormContainer />
         <TodoFilterContainer />
         <TodoListContainer />

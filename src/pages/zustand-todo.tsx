@@ -4,9 +4,9 @@ import { Todo, Todos } from "model";
 import TodoLayout from "components/TodoLayout";
 import AddForm from "components/AddForm";
 import TodoList from "components/TodoList";
-import { combine, devtools } from "zustand/middleware";
-import * as utils from "utils";
+import { combine } from "zustand/middleware";
 import TodoFilter from "components/TodoFilter";
+import { pureAddTodo, pureToggleTodo } from "utils";
 
 const initialState = {
   todos: [] as Todos,
@@ -18,9 +18,9 @@ type State = typeof initialState;
 const useStore = create(
   combine(initialState, set => ({
     addTodo: (todo: Todo) =>
-      set(({ todos }) => ({ todos: utils.pureAddTodo(todos, todo) })),
+      set(({ todos }) => ({ todos: pureAddTodo(todos, todo) })),
     toggleTodo: (id: string) =>
-      set(({ todos }) => ({ todos: utils.pureToggleTodo(todos, id) })),
+      set(({ todos }) => ({ todos: pureToggleTodo(todos, id) })),
     toggleShowCompleted: () =>
       set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
   }))
