@@ -26,7 +26,7 @@ const useStore = create(
   }))
 );
 
-export default function ZustandAsync() {
+export default function Page() {
   return (
     <TodoLayout title="Zustand Async">
       <AddFormContainer />

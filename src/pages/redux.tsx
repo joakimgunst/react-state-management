@@ -47,7 +47,7 @@ const selectVisibleTodos = ({ todos, showCompleted }: State) =>
 
 const { actions } = todoSlice;
 
-export default function Redux() {
+export default function Page() {
   return (
     <Provider store={store}>
       <TodoLayout title="Redux">

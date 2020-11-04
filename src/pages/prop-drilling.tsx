@@ -5,7 +5,7 @@ import TodoList from "components/TodoList";
 import TodoLayout from "components/TodoLayout";
 import { pureAddTodo, pureToggleTodo } from "utils";
 
-export default function PropDrilling() {
+export default function Page() {
   const [todos, setTodos] = useState<Todos>([]);
 
   const addTodo = (todo: Todo) => setTodos(todos => pureAddTodo(todos, todo));

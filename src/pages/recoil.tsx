@@ -33,7 +33,7 @@ const visibleTodosState = selector({
   },
 });
 
-export default function Recoil() {
+export default function Page() {
   return (
     <RecoilRoot>
       <TodoLayout title="Recoil">

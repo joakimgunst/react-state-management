@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import TodoLayout from "components/TodoLayout";
 
-export default function Home() {
+export default function Page() {
   const links = [
     { label: "Prop Drilling", href: "/prop-drilling" },
     { label: "Context", href: "/context" },

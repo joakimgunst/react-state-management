@@ -31,7 +31,7 @@ function TodoProvider(props: PropsWithChildren<{}>) {
   return <TodoContext.Provider value={value} {...props} />;
 }
 
-export default function Context() {
+export default function Page() {
   return (
     <TodoProvider>
       <TodoLayout title="Context">

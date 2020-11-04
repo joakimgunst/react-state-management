@@ -29,7 +29,7 @@ const useStore = create(
 const selectVisibleTodos = ({ todos, showCompleted }: State) =>
   todos.filter(t => t.completed === showCompleted);
 
-export default function Zustand() {
+export default function Page() {
   return (
     <TodoLayout title="Zustand">
       <AddFormContainer />
