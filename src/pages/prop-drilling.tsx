@@ -5,7 +5,7 @@ import TodoList from "components/TodoList";
 import TodoLayout from "components/TodoLayout";
 import { pureAddTodo, pureToggleTodo } from "utils";
 
-export default function UseState() {
+export default function PropDrilling() {
   const [todos, setTodos] = useState<Todos>([]);
 
   const addTodo = (todo: Todo) => setTodos(todos => pureAddTodo(todos, todo));
@@ -13,7 +13,7 @@ export default function UseState() {
   const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
 
   return (
-    <TodoLayout title="useState">
+    <TodoLayout title="Prop Drilling">
       <AddForm onAdd={addTodo} />
       <TodoList todos={todos} onToggle={toggle} />
     </TodoLayout>
