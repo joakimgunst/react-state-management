@@ -4,12 +4,12 @@ import TodoLayout from "components/TodoLayout";
 
 export default function Home() {
   const links = [
-    { label: "useState", href: "/use-state-todo" },
-    { label: "useState Immer", href: "/use-state-todo-immer" },
-    { label: "Redux", href: "/redux-todo" },
-    { label: "Zustand", href: "/zustand-todo" },
-    { label: "Zustand Async", href: "/zustand-async-todo" },
-    { label: "Recoil", href: "/recoil-todo" },
+    { label: "useState", href: "/use-state" },
+    { label: "useState Immer", href: "/use-state-immer" },
+    { label: "Redux", href: "/redux" },
+    { label: "Zustand", href: "/zustand" },
+    { label: "Zustand Async", href: "/zustand-async" },
+    { label: "Recoil", href: "/recoil" },
   ];
 
   return (
