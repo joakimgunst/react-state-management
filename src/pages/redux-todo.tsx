@@ -1,6 +1,11 @@
 import React from "react";
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import {
+  Provider,
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector,
+} from "react-redux";
 import { Todo, Todos } from "model";
 import AddForm from "components/AddForm";
 import TodoLayout from "components/TodoLayout";
@@ -35,10 +40,12 @@ const state = store.getState();
 
 type State = typeof state;
 
+const useTypedSelector: TypedUseSelectorHook<State> = useSelector;
+
 const selectVisibleTodos = ({ todos, showCompleted }: State) =>
   todos.filter(t => t.completed === showCompleted);
 
-const { addTodo, toggleTodo, toggleShowCompleted } = todoSlice.actions;
+const { actions } = todoSlice;
 
 export default function Redux() {
   return (
@@ -54,24 +61,20 @@ export default function Redux() {
 
 function AddFormContainer() {
   const dispatch = useDispatch();
-  return <AddForm onAdd={todo => dispatch(addTodo({ todo }))} />;
+  const addTodo = (todo: Todo) => dispatch(actions.addTodo({ todo }));
+  return <AddForm onAdd={addTodo} />;
 }
 
 function TodoFilterContainer() {
   const dispatch = useDispatch();
-  const showCompleted = useSelector((state: State) => state.showCompleted);
-  return (
-    <TodoFilter
-      showCompleted={showCompleted}
-      onToggle={() => dispatch(toggleShowCompleted())}
-    />
-  );
+  const showCompleted = useTypedSelector(state => state.showCompleted);
+  const toggle = () => dispatch(actions.toggleShowCompleted());
+  return <TodoFilter showCompleted={showCompleted} onToggle={toggle} />;
 }
 
 function TodoListContainer() {
   const dispatch = useDispatch();
   const todos = useSelector(selectVisibleTodos);
-  return (
-    <TodoList todos={todos} onToggle={id => dispatch(toggleTodo({ id }))} />
-  );
+  const toggleTodo = (id: string) => dispatch(actions.toggleTodo({ id }));
+  return <TodoList todos={todos} onToggle={toggleTodo} />;
 }
