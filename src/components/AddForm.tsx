@@ -40,7 +40,7 @@ export default function AddForm({ onAdd }: Props) {
         input {
           padding: 16px;
           border-radius: 8px;
-          border: 1px solid #ccc;
+          border: 1px solid #bbb;
           font-family: inherit;
           font-size: inherit;
           min-width: 80px;

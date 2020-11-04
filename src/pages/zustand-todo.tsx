@@ -6,10 +6,14 @@ import AddForm from "components/AddForm";
 import TodoList from "components/TodoList";
 import { combine } from "zustand/middleware";
 import * as utils from "utils";
+import TodoFilter from "components/TodoFilter";
 
 const initialState = {
   todos: [] as Todos,
+  showCompleted: false,
 };
+
+type State = typeof initialState;
 
 const useStore = create(
   combine(initialState, set => ({
@@ -17,13 +21,19 @@ const useStore = create(
       set(({ todos }) => ({ todos: utils.addTodo(todos, todo) })),
     toggleTodo: (id: string) =>
       set(({ todos }) => ({ todos: utils.toggleTodo(todos, id) })),
+    toggleShowCompleted: () =>
+      set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
   }))
 );
+
+const selectVisibleTodos = ({ todos, showCompleted }: State) =>
+  todos.filter(t => t.completed === showCompleted);
 
 export default function Zustand() {
   return (
     <TodoLayout title="Zustand">
       <AddFormContainer />
+      <TodoFilterContainer />
       <TodoListContainer />
     </TodoLayout>
   );
@@ -34,8 +44,14 @@ function AddFormContainer() {
   return <AddForm onAdd={addTodo} />;
 }
 
+function TodoFilterContainer() {
+  const showCompleted = useStore(state => state.showCompleted);
+  const toggle = useStore(state => state.toggleShowCompleted);
+  return <TodoFilter showCompleted={showCompleted} onToggle={toggle} />;
+}
+
 function TodoListContainer() {
-  const todos = useStore(state => state.todos);
+  const todos = useStore(selectVisibleTodos);
   const toggleTodo = useStore(state => state.toggleTodo);
   return <TodoList todos={todos} onToggle={toggleTodo} />;
 }

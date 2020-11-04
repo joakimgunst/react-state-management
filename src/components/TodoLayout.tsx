@@ -14,13 +14,11 @@ export default function TodoLayout({ title, children }: Props) {
 
       <style jsx>{`
         .layout {
-          margin: 48px auto;
-          padding: 32px;
+          margin: 0 auto;
+          padding: 48px 16px;
+          max-width: 600px;
           display: grid;
           gap: 24px;
-          background-color: #f5f5f5;
-          border-radius: 16px;
-          max-width: 600px;
         }
 
         h1 {

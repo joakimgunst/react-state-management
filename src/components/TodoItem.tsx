@@ -16,6 +16,7 @@ export default function TodoItem({ todo, onToggle }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: todo.completed ? 0.5 : 1 }}
       exit={{ opacity: 0 }}
+      layout
     >
       <div className="item">
         <input type="checkbox" checked={todo.completed} onChange={toggle} />
@@ -25,9 +26,9 @@ export default function TodoItem({ todo, onToggle }: Props) {
           .item {
             display: flex;
             align-items: center;
-            column-gap: 16px;
+            column-gap: 8px;
             padding: 16px;
-            background: #fff;
+            background: #f5f5f5;
             border-radius: 8px;
             overflow: hidden;
           }
