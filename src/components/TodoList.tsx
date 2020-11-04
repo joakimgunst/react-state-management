@@ -10,7 +10,7 @@ interface Props {
 export default function TodoList({ todos, onToggle }: Props) {
   return (
     <div className="list">
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {Object.values(todos).map(todo => (
           <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
         ))}
