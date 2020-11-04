@@ -19,9 +19,9 @@ const useStore = create(
   devtools(
     combine(initialState, set => ({
       addTodo: (todo: Todo) =>
-        set(({ todos }) => ({ todos: utils.addTodo(todos, todo) })),
+        set(({ todos }) => ({ todos: utils.pureAddTodo(todos, todo) })),
       toggleTodo: (id: string) =>
-        set(({ todos }) => ({ todos: utils.toggleTodo(todos, id) })),
+        set(({ todos }) => ({ todos: utils.pureToggleTodo(todos, id) })),
       toggleShowCompleted: () =>
         set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
     }))
