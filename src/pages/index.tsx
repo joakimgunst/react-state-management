@@ -10,6 +10,7 @@ export default function Page() {
     { label: "Zustand", href: "/zustand" },
     { label: "Zustand Async", href: "/zustand-async" },
     { label: "Recoil", href: "/recoil" },
+    { label: "Jotai", href: "/jotai" },
   ];
 
   return (
