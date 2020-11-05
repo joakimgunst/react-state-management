@@ -15,6 +15,7 @@ export default function Page() {
   const asyncLinks = [
     { label: "Zustand Async", href: "/async/zustand" },
     { label: "SWR", href: "/async/swr" },
+    { label: "Jotai Async", href: "/async/jotai" },
   ];
 
   return (
