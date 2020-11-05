@@ -13,8 +13,8 @@ export default function Page() {
   ];
 
   const asyncLinks = [
-    { label: "Zustand Async", href: "/zustand-async" },
-    { label: "SWR", href: "/swr" },
+    { label: "Zustand Async", href: "/async/zustand" },
+    { label: "SWR", href: "/async/swr" },
   ];
 
   return (
