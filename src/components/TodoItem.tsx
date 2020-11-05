@@ -3,14 +3,11 @@ import { Todo } from "model";
 
 interface Props {
   todo: Todo;
-  onToggle(todo: Todo): void;
+  onToggle?: (todo: Todo) => void;
+  onDelete?: (todo: Todo) => void;
 }
 
-export default function TodoItem({ todo, onToggle }: Props) {
-  function toggle() {
-    onToggle(todo);
-  }
-
+export default function TodoItem({ todo, onToggle, onDelete }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,8 +16,19 @@ export default function TodoItem({ todo, onToggle }: Props) {
       layout
     >
       <div className="item">
-        <input type="checkbox" checked={todo.completed} onChange={toggle} />
+        {onToggle && (
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => onToggle(todo)}
+          />
+        )}
         <span className="text">{todo.text}</span>
+        {onDelete && (
+          <a className="delete" onClick={() => onDelete(todo)}>
+            Delete
+          </a>
+        )}
 
         <style jsx>{`
           .item {
@@ -42,6 +50,13 @@ export default function TodoItem({ todo, onToggle }: Props) {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+          }
+
+          .delete {
+            margin-left: auto;
+            padding-left: 8px;
+            color: #b53535;
+            cursor: pointer;
           }
         `}</style>
       </div>

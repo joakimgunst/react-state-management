@@ -22,3 +22,7 @@ export async function updateTodo(id: string, todo: Todo) {
     id,
   ]);
 }
+
+export async function deleteTodo(id: string) {
+  await pool.query("DELETE FROM todos WHERE id = $1", [id]);
+}

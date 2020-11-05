@@ -8,14 +8,25 @@ export default function Page() {
     { label: "Context", href: "/context" },
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
-    { label: "Zustand Async", href: "/zustand-async" },
     { label: "Recoil", href: "/recoil" },
     { label: "Jotai", href: "/jotai" },
+  ];
+
+  const asyncLinks = [
+    { label: "Zustand Async", href: "/zustand-async" },
+    { label: "SWR", href: "/swr" },
   ];
 
   return (
     <TodoLayout title="Examples">
       {links.map(link => (
+        <Link key={link.href} href={link.href}>
+          <a>{link.label}</a>
+        </Link>
+      ))}
+
+      <h2>Async</h2>
+      {asyncLinks.map(link => (
         <Link key={link.href} href={link.href}>
           <a>{link.label}</a>
         </Link>
@@ -30,6 +41,10 @@ export default function Page() {
           border-radius: 8px;
           box-shadow: 0 2px 0 #c2d0d4;
           text-align: center;
+        }
+
+        h2 {
+          margin-bottom: 0;
         }
       `}</style>
     </TodoLayout>

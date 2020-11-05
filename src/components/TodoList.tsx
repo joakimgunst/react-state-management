@@ -4,15 +4,21 @@ import TodoItem from "./TodoItem";
 
 interface Props {
   todos: Todos;
-  onToggle(todo: Todo): void;
+  onToggle?: (todo: Todo) => void;
+  onDelete?: (todo: Todo) => void;
 }
 
-export default function TodoList({ todos, onToggle }: Props) {
+export default function TodoList({ todos, onToggle, onDelete }: Props) {
   return (
     <div className="list">
       <AnimatePresence initial={false}>
         {Object.values(todos).map(todo => (
-          <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={onToggle}
+            onDelete={onDelete}
+          />
         ))}
       </AnimatePresence>
 
