@@ -6,6 +6,7 @@ import { Todo, Todos } from "model";
 import * as api from "api";
 import { combine } from "zustand/middleware";
 import TodoLayout from "components/TodoLayout";
+import LoadingSpinner from "components/LoadingSpinner";
 
 const initialState = {
   todos: undefined as Todos | undefined,
@@ -50,6 +51,6 @@ function TodoListContainer() {
   const deleteTodo = useStore(state => state.deleteTodo);
   useEffect(() => void getTodos(), []);
 
-  if (!todos) return null;
+  if (!todos) return <LoadingSpinner />;
   return <TodoList todos={todos} onDelete={deleteTodo} />;
 }

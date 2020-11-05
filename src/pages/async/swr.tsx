@@ -5,6 +5,7 @@ import { Todo, Todos } from "model";
 import * as api from "api";
 import TodoLayout from "components/TodoLayout";
 import useSWR, { mutate, SWRConfig } from "swr";
+import LoadingSpinner from "components/LoadingSpinner";
 
 export default function Page() {
   return (
@@ -34,6 +35,6 @@ function TodoListContainer() {
     await mutate("/api/todos");
   };
 
-  if (!todos) return null;
+  if (!todos) return <LoadingSpinner />;
   return <TodoList todos={todos} onDelete={deleteTodo} />;
 }
