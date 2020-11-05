@@ -1,10 +1,10 @@
 import { AnimatePresence } from "framer-motion";
-import { Todos } from "model";
+import { Todo, Todos } from "model";
 import TodoItem from "./TodoItem";
 
 interface Props {
   todos: Todos;
-  onToggle(id: string): void;
+  onToggle(todo: Todo): void;
 }
 
 export default function TodoList({ todos, onToggle }: Props) {

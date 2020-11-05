@@ -50,6 +50,6 @@ function AddFormContainer() {
 
 function TodoListContainer() {
   const [todos, setTodos] = useTodoContext();
-  const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
+  const toggle = ({ id }: Todo) => setTodos(todos => pureToggleTodo(todos, id));
   return <TodoList todos={todos} onToggle={toggle} />;
 }

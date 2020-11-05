@@ -10,7 +10,7 @@ export default function Page() {
 
   const addTodo = (todo: Todo) => setTodos(todos => pureAddTodo(todos, todo));
 
-  const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
+  const toggle = ({ id }: Todo) => setTodos(todos => pureToggleTodo(todos, id));
 
   return (
     <TodoLayout title="Prop Drilling">

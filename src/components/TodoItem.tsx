@@ -3,12 +3,12 @@ import { Todo } from "model";
 
 interface Props {
   todo: Todo;
-  onToggle(id: string): void;
+  onToggle(todo: Todo): void;
 }
 
 export default function TodoItem({ todo, onToggle }: Props) {
   function toggle() {
-    onToggle(todo.id);
+    onToggle(todo);
   }
 
   return (

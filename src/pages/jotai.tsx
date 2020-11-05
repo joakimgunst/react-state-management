@@ -44,6 +44,6 @@ function TodoFilterContainer() {
 function TodoListContainer() {
   const [, setTodos] = useAtom(todosAtom);
   const [visibleTodos] = useAtom(visibleTodosAtom);
-  const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
+  const toggle = ({ id }: Todo) => setTodos(todos => pureToggleTodo(todos, id));
   return <TodoList todos={visibleTodos} onToggle={toggle} />;
 }

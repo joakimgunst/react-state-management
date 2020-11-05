@@ -1,23 +1,17 @@
+import Axios from "axios";
 import { Todo } from "model";
 
-const todos: Todo[] = [];
+export const todosPath = "/api/todos";
 
 export async function addTodo(todo: Todo) {
-  await sleep(200);
-  todos.push(todo);
+  await Axios.post(todosPath, todo);
 }
 
-export async function toggleTodo(id: string) {
-  await sleep(200);
-  const todo = todos.find(t => t.id === id);
-  if (todo) todo.completed = !todo.completed;
+export async function updateTodo(id: string, todo: Partial<Todo>) {
+  await Axios.put(`${todosPath}/${id}`, todo);
 }
 
 export async function getTodos() {
-  await sleep(200);
-  return [...todos];
-}
-
-async function sleep(ms: number) {
-  await new Promise(resolve => setTimeout(resolve, ms));
+  const response = await Axios.get<Todo[]>(todosPath);
+  return response.data;
 }

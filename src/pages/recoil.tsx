@@ -60,6 +60,6 @@ function TodoFilterContainer() {
 function TodoListContainer() {
   const setTodos = useSetRecoilState(todosState);
   const visibleTodos = useRecoilValue(visibleTodosState);
-  const toggle = (id: string) => setTodos(todos => pureToggleTodo(todos, id));
+  const toggle = ({ id }: Todo) => setTodos(todos => pureToggleTodo(todos, id));
   return <TodoList todos={visibleTodos} onToggle={toggle} />;
 }

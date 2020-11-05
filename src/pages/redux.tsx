@@ -75,6 +75,6 @@ function TodoFilterContainer() {
 function TodoListContainer() {
   const dispatch = useDispatch();
   const todos = useSelector(selectVisibleTodos);
-  const toggleTodo = (id: string) => dispatch(actions.toggleTodo({ id }));
+  const toggleTodo = ({ id }: Todo) => dispatch(actions.toggleTodo({ id }));
   return <TodoList todos={todos} onToggle={toggleTodo} />;
 }
