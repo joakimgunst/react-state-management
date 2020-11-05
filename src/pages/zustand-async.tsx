@@ -6,14 +6,10 @@ import { Todo, Todos } from "model";
 import * as api from "api";
 import { combine } from "zustand/middleware";
 import TodoLayout from "components/TodoLayout";
-import TodoFilter from "components/TodoFilter";
 
 const initialState = {
-  todos: [] as Todos,
-  showCompleted: false,
+  todos: undefined as Todos | undefined,
 };
-
-type State = typeof initialState;
 
 const useStore = create(
   combine(initialState, set => ({
@@ -26,24 +22,18 @@ const useStore = create(
       const todos = await api.getTodos();
       set({ todos });
     },
-    toggleTodo: async (todo: Todo) => {
-      await api.updateTodo(todo.id, { completed: !todo.completed });
+    deleteTodo: async (todo: Todo) => {
+      await api.deleteTodo(todo.id);
       const todos = await api.getTodos();
       set({ todos });
     },
-    toggleShowCompleted: () =>
-      set(({ showCompleted }) => ({ showCompleted: !showCompleted })),
   }))
 );
-
-const selectVisibleTodos = ({ todos, showCompleted }: State) =>
-  todos.filter(t => t.completed === showCompleted);
 
 export default function Page() {
   return (
     <TodoLayout title="Zustand Async">
       <AddFormContainer />
-      <TodoFilterContainer />
       <TodoListContainer />
     </TodoLayout>
   );
@@ -54,16 +44,12 @@ function AddFormContainer() {
   return <AddForm onAdd={addTodo} />;
 }
 
-function TodoFilterContainer() {
-  const showCompleted = useStore(state => state.showCompleted);
-  const toggle = useStore(state => state.toggleShowCompleted);
-  return <TodoFilter showCompleted={showCompleted} onToggle={toggle} />;
-}
-
 function TodoListContainer() {
-  const todos = useStore(selectVisibleTodos);
+  const todos = useStore(state => state.todos);
   const getTodos = useStore(state => state.getTodos);
-  const toggleTodo = useStore(state => state.toggleTodo);
+  const deleteTodo = useStore(state => state.deleteTodo);
   useEffect(() => void getTodos(), []);
-  return <TodoList todos={todos} onToggle={toggleTodo} />;
+
+  if (!todos) return null;
+  return <TodoList todos={todos} onDelete={deleteTodo} />;
 }
