@@ -18,7 +18,7 @@ const queryCache = new QueryCache();
 export default function Page() {
   return (
     <ReactQueryCacheProvider queryCache={queryCache}>
-      <TodoLayout title="SWR">
+      <TodoLayout title="React Query">
         <AddFormContainer />
         <TodoListContainer />
       </TodoLayout>
