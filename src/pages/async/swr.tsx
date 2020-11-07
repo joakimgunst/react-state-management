@@ -9,30 +9,28 @@ import LoadingSpinner from "components/LoadingSpinner";
 
 export default function Page() {
   return (
-    <SWRConfig value={{ fetcher: api.fetcher }}>
-      <TodoLayout title="SWR">
-        <AddFormContainer />
-        <TodoListContainer />
-      </TodoLayout>
-    </SWRConfig>
+    <TodoLayout title="SWR">
+      <AddFormContainer />
+      <TodoListContainer />
+    </TodoLayout>
   );
 }
 
 function AddFormContainer() {
   const addTodo = async (todo: Todo) => {
     await api.addTodo(todo);
-    await mutate("/api/todos");
+    await mutate("todos");
   };
 
   return <AddForm onAdd={addTodo} />;
 }
 
 function TodoListContainer() {
-  const { data: todos } = useSWR<Todos>("/api/todos");
+  const { data: todos } = useSWR<Todos>("todos", api.getTodos);
 
   const deleteTodo = async (todo: Todo) => {
     await api.deleteTodo(todo.id);
-    await mutate("/api/todos");
+    await mutate("todos");
   };
 
   if (!todos) return <LoadingSpinner />;
