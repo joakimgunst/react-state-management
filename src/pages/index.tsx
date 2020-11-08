@@ -19,24 +19,42 @@ export default function Page() {
     { label: "React Query", href: "/async/react-query" },
     { label: "Recoil Async", href: "/async/recoil" },
     { label: "Jotai Async", href: "/async/jotai" },
+    { label: "Apollo", href: "/async/apollo" },
   ];
 
   return (
     <TodoLayout title="Examples">
-      {links.map(link => (
-        <Link key={link.href} href={link.href}>
-          <a>{link.label}</a>
-        </Link>
-      ))}
+      <div className="grid">
+        <div className="list">
+          <h2>Sync</h2>
+          {links.map(link => (
+            <Link key={link.href} href={link.href}>
+              <a>{link.label}</a>
+            </Link>
+          ))}
+        </div>
 
-      <h2>Async</h2>
-      {asyncLinks.map(link => (
-        <Link key={link.href} href={link.href}>
-          <a>{link.label}</a>
-        </Link>
-      ))}
+        <div className="list">
+          <h2>Async</h2>
+          {asyncLinks.map(link => (
+            <Link key={link.href} href={link.href}>
+              <a>{link.label}</a>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <style jsx>{`
+        .grid {
+          display: grid;
+          column-gap: 24px;
+        }
+
+        .list {
+          display: flex;
+          flex-direction: column;
+        }
+
         a {
           font-size: 1.25rem;
           background-color: #acefff;
@@ -45,10 +63,13 @@ export default function Page() {
           border-radius: 8px;
           box-shadow: 0 2px 0 #c2d0d4;
           text-align: center;
+          margin-bottom: 16px;
         }
 
-        h2 {
-          margin-bottom: 0;
+        @media (min-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
       `}</style>
     </TodoLayout>
