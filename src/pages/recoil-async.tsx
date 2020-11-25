@@ -8,7 +8,7 @@ import * as api from "api";
 import LoadingSpinner from "components/LoadingSpinner";
 
 const todosState = atom({
-  key: "todos",
+  key: "as-todos",
   default: undefined as Todos | undefined,
 });
 
