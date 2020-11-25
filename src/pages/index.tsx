@@ -17,7 +17,6 @@ export default function Page() {
     { label: "Recoil (atom family)", href: "/recoil-atom-family" },
     { label: "Recoil (async)", href: "/recoil-async" },
     { label: "Jotai", href: "/jotai" },
-    { label: "Jotai (async)", href: "/jotai-async" },
   ];
 
   return (
