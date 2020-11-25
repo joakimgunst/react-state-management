@@ -36,6 +36,7 @@ export default function AddForm({ onAdd }: Props) {
         name="text"
         ref={register({ required: true })}
         placeholder="Enter todo"
+        autoComplete="off"
         autoFocus
       />
       <button type="submit">Add todo</button>
