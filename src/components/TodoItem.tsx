@@ -25,7 +25,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
         )}
         <span className="text">{todo.text}</span>
         {onDelete && (
-          <a className="delete" onClick={() => onDelete(todo)}>
+          <a className="delete" tabIndex={0} onClick={() => onDelete(todo)}>
             Delete
           </a>
         )}
@@ -50,11 +50,12 @@ export default function TodoItem({ todo, onToggle, onDelete }: Props) {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            margin-right: auto;
           }
 
           .delete {
-            margin-left: auto;
-            padding-left: 8px;
+            padding: 2px;
+            margin-left: 8px;
             color: #b53535;
             cursor: pointer;
           }
