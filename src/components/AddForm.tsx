@@ -1,34 +1,44 @@
 import { Todo } from "model";
 import { nanoid } from "nanoid";
-import { FormEvent, useState } from "react";
+import { useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface Props {
   onAdd(todo: Todo): void;
 }
 
-export default function AddForm({ onAdd }: Props) {
-  const [value, setValue] = useState("");
+interface FormState {
+  text: string;
+}
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    if (value) {
-      onAdd({ id: nanoid(8), text: value, completed: false });
-      setValue("");
+export default function AddForm({ onAdd }: Props) {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitSuccessful },
+  } = useForm<FormState>();
+
+  const onSubmit: SubmitHandler<FormState> = ({ text }) => {
+    onAdd({ id: nanoid(8), text: text, completed: false });
+  };
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
     }
-  }
+  }, [isSubmitSuccessful, reset]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <input
         type="text"
-        value={value}
-        autoFocus
+        name="text"
+        ref={register({ required: true })}
         placeholder="Enter todo"
-        onChange={e => setValue(e.target.value)}
+        autoFocus
       />
-      <button type="submit" disabled={!value}>
-        Add todo
-      </button>
+      <button type="submit">Add todo</button>
 
       <style jsx>{`
         form {
@@ -46,6 +56,11 @@ export default function AddForm({ onAdd }: Props) {
           min-width: 80px;
         }
 
+        input:focus {
+          outline: none;
+          border-color: #777;
+        }
+
         button {
           padding: 16px;
           background-color: #acefff;
@@ -54,6 +69,16 @@ export default function AddForm({ onAdd }: Props) {
           border: 0;
           border-radius: 8px;
           box-shadow: 0 2px 0 #c2d0d4;
+          transition: background 0.2s;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: #bcf2ff;
+        }
+
+        button:active {
+          background-color: #80e0f7;
         }
       `}</style>
     </form>
