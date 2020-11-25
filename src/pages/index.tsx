@@ -9,6 +9,7 @@ export default function Page() {
     { label: "Redux", href: "/redux" },
     { label: "Zustand", href: "/zustand" },
     { label: "Recoil", href: "/recoil" },
+    { label: "Recoil (atom family)", href: "/recoil-atom-family" },
     { label: "Jotai", href: "/jotai" },
   ];
 

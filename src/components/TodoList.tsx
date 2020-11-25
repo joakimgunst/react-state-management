@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import { Todo, Todos } from "model";
 import TodoItem from "./TodoItem";
+import TodoListWrapper from "./TodoListWrapper";
 
 interface Props {
   todos: Todos;
@@ -9,25 +10,17 @@ interface Props {
 }
 
 export default function TodoList({ todos, onToggle, onDelete }: Props) {
+  if (todos.length === 0) return null;
   return (
-    <div className="list">
-      <AnimatePresence initial={false}>
-        {Object.values(todos).map(todo => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onToggle={onToggle}
-            onDelete={onDelete}
-          />
-        ))}
-      </AnimatePresence>
-
-      <style jsx>{`
-        .list {
-          display: grid;
-          gap: 8px;
-        }
-      `}</style>
-    </div>
+    <TodoListWrapper>
+      {todos.map(todo => (
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          onToggle={onToggle}
+          onDelete={onDelete}
+        />
+      ))}
+    </TodoListWrapper>
   );
 }
