@@ -21,7 +21,7 @@ const fetchTodosAtom = atom(
 export default function Page() {
   return (
     <Provider>
-      <TodoLayout title="Jotai Async">
+      <TodoLayout title="Jotai (async)">
         <AddFormContainer />
         <Suspense fallback={<LoadingSpinner />}>
           <TodoListContainer />

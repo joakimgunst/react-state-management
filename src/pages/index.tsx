@@ -7,64 +7,37 @@ export default function Page() {
     { label: "Prop Drilling", href: "/prop-drilling" },
     { label: "Context", href: "/context" },
     { label: "Redux", href: "/redux" },
+    { label: "SWR", href: "/swr" },
+    { label: "SWR (optimistic update)", href: "/swr-optimistic" },
+    { label: "React Query", href: "/react-query" },
+    { label: "Apollo", href: "/apollo" },
     { label: "Zustand", href: "/zustand" },
+    { label: "Zustand (async)", href: "/zustand-async" },
     { label: "Recoil", href: "/recoil" },
     { label: "Recoil (atom family)", href: "/recoil-atom-family" },
+    { label: "Recoil (async)", href: "/recoil-async" },
     { label: "Jotai", href: "/jotai" },
-  ];
-
-  const asyncLinks = [
-    { label: "Zustand Async", href: "/async/zustand" },
-    { label: "SWR", href: "/async/swr" },
-    { label: "SWR Optimistic", href: "/async/swr-optimistic" },
-    { label: "React Query", href: "/async/react-query" },
-    { label: "Recoil Async", href: "/async/recoil" },
-    { label: "Jotai Async", href: "/async/jotai" },
-    { label: "Apollo", href: "/async/apollo" },
+    { label: "Jotai (async)", href: "/jotai-async" },
   ];
 
   return (
     <TodoLayout title="Examples">
       <div className="grid">
-        <div className="list">
-          <h2>Sync</h2>
+        <ul>
           {links.map(link => (
-            <Link key={link.href} href={link.href}>
-              <a>{link.label}</a>
-            </Link>
+            <li key={link.href}>
+              <Link href={link.href}>
+                <a>{link.label}</a>
+              </Link>
+            </li>
           ))}
-        </div>
-
-        <div className="list">
-          <h2>Async</h2>
-          {asyncLinks.map(link => (
-            <Link key={link.href} href={link.href}>
-              <a>{link.label}</a>
-            </Link>
-          ))}
-        </div>
+        </ul>
       </div>
 
       <style jsx>{`
         .grid {
           display: grid;
           column-gap: 24px;
-        }
-
-        .list {
-          display: flex;
-          flex-direction: column;
-        }
-
-        a {
-          font-size: 1.25rem;
-          background-color: #acefff;
-          color: #000;
-          padding: 12px 16px;
-          border-radius: 8px;
-          box-shadow: 0 2px 0 #c2d0d4;
-          text-align: center;
-          margin-bottom: 16px;
         }
 
         @media (min-width: 768px) {

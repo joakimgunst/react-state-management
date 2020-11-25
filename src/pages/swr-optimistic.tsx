@@ -10,7 +10,7 @@ import { pureAddTodo, pureDeleteTodo } from "utils";
 
 export default function Page() {
   return (
-    <TodoLayout title="SWR Optimistic">
+    <TodoLayout title="SWR (optimistic update)">
       <AddFormContainer />
       <TodoListContainer />
     </TodoLayout>

@@ -33,7 +33,7 @@ const useStore = create(
 
 export default function Page() {
   return (
-    <TodoLayout title="Zustand Async">
+    <TodoLayout title="Zustand (async)">
       <AddFormContainer />
       <TodoListContainer />
     </TodoLayout>

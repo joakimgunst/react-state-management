@@ -15,7 +15,7 @@ const todosState = atom({
 export default function Page() {
   return (
     <RecoilRoot>
-      <TodoLayout title="Recoil Async">
+      <TodoLayout title="Recoil (async)">
         <AddFormContainer />
         <TodoListContainer />
       </TodoLayout>
